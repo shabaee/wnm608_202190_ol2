@@ -1,6 +1,8 @@
 
 /* CSS RESET */
 
+@import url("https://use.typekit.net/bnh7meq.css");
+
 *, *::after, *::before{
 	box-sizing: border-box;
 }
@@ -16,14 +18,54 @@
 	--header-height:3rem;
 	--spacing:1rem;
 
-	--font-serif:Georgia, "Times New Roman", serif;
-	--font-sans: Helvetica, Arial, sans-serif;
 }
 
+.stevie-reg {
+	font-family: "stevie-sans", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.stevie-medium {
+	font-family: "stevie-sans", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.stevie-bold {
+	font-family: "stevie-sans", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.stevie-black{
+	font-family: "stevie-sans", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}
+
+.stevie-light{
+	font-family: "stevie-sans", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+}
+
+.stevie-thin{
+	font-family: "stevie-sans", sans-serif;
+	font-weight: 200;
+	font-style: normal;
+}
+
+.stevie-book{
+	font-family: "stevie-sans", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
 body {
 	margin:0;
 	font-size: 100%;
-	font-family:var(--font-sans);
+	font-family:"stevie-sans", sans-serif;
+	margin-bottom: 10px;
 }
 
 h1,
@@ -32,9 +74,80 @@ h3,
 h4,
 h5,
 h6 {
-	font-family:var(--font-sans);
+	font-family:"stevie-sans", sans-serif;
 }
 
+.styletitle {
+	font-family:"stevie-sans", sans-serif;
+	font-size: 60pt;
+	font-weight: 900;
+	color: white;
+	margin-top: 50px;
+	margin-bottom: 40px;
+}
+
+.type {
+	font-family:"stevie-sans", sans-serif;
+	font-size: 40pt;
+	font-weight: 600;
+	color: #78E600;
+	margin-bottom: 25px;
+}
+
+.headingbig {
+	font-family:"stevie-sans", sans-serif;
+	font-size: 48pt;
+	font-weight: 900;
+	color: black;
+}
+
+.font {
+	font-family:"stevie-sans", sans-serif;
+	font-weight: 900;
+	color: #4E00FC;
+	margin: 10px;
+}
+
+
+
+.caption {
+	font-family:"stevie-sans", sans-serif;
+	font-weight: 500;
+	color: black;
+	font-size: 12pt;
+	margin-top: -50px;
+	font-style: italic;
+
+}
+
+.subheading{
+	font-family:"stevie-sans", sans-serif;
+	font-weight: 600;
+	color: black;
+	font-size: 32pt;
+	margin-top: -15px;
+
+}
+
+.bodyheading {
+	font-family:"stevie-sans", sans-serif;
+	font-weight: 500;
+	color: black;
+	font-size: 24pt;
+	margin-top: -15px;
+
+}
+
+.bodytext {
+	font-family:"stevie-sans", sans-serif;
+	font-weight: 400;
+	color: black;
+	font-size: 12pt;
+	margin-top: -50px;
+	margin-bottom: -5px;
+
+}
+	
 a {
 	color: inherit;
 	font-weight: bold;
@@ -45,16 +158,74 @@ a:hover {
 	text-decoration: underline;
 }
 
+.swatchcard {
+	background-color: var(--color-white);
+	height: 80px ;
+	margin: 10px;
+	border-radius: 0.5em;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	font-family: "stevie-sans", sans-serif;
+	font-weight: 500;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	padding: 10px;
+
+}
+
+.swatch1 {
+	background-color: white;
+	color: black;
+}
+
+.swatch2 {
+	background-color: #999999;
+	color: black;
+}
+
+
+.swatch3 {
+	background-color: black ;
+	color: white;
+}
+
+
+.swatch4 {
+	background-color: #A6CAFF;
+	color: black;
+}
+
+.swatch5 {
+	background-color: #4E5FF1;
+	color: black;
+}
+
+.swatch6 {
+	background-color: #4E00FC;
+	color: white;
+}
+
+.swatch7 {
+	background-color: #78E600;
+	color: black;
+}
+.swatch8 {
+	background-color: #009100;
+	color: black;
+}
+.swatch9 {
+	background-color: #336600;
+	color: white;
+}
 
 
 
  /* LAYOUT CLASSES */
 
 .container {
-
-	max-width: 800px;
-	margin-right: auto;
-	margin-left: auto;
+    width: 1000px; /* Change this value to your desired width */
+    margin: 0 auto; /* This centers the container horizontally */
+}
 }
 
 .display-flex { display:flex; }
@@ -80,7 +251,7 @@ a:hover {
 }
 
 .navbar {
-	background-color: #ff6699;
+	background-color: #4E00FC;
 	color:var(--color-white);
 	line-height:var(--header-height);
 }
@@ -109,6 +280,8 @@ a:hover {
 .card.soft {
 	border-radius: 0.5em;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) ;
+	padding: 40px;
+	width: 100%;
 }
 
 .card.hard {
