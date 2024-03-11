@@ -1,8 +1,140 @@
 
 :root {
-	--color-offwhite: #f4f4f4;
+	--color-neutral-light: #eee;
+	--color-neutral-medium: #999;
+	--color-neutral-dark: #555;
+
+	--color-blue-light: #A6CAFF;
+	--color-blue-medium: #4E5FF1;
+	--color-blue-dark: #4E00FC;
+
+	--color-green-light: #78E600;
+	--color-green-medium: #009100;
+	--color-green-dark: #336600;
+
+	--color-black:#000;
+	--color-white:#fff;
+
 }
 
 body {
 	background-color:var(--color-offwhite) ;
+	padding-bottom: 10em;
+
+}
+
+.favorite label {
+	transition: all 0.3s;
+	display: inline-block;
+	transform: scale(1,1);
+	color: var(--color-neutral-medium);
+}
+
+.favorite input:checked + label {
+	color: red;
+	transform: scale(1.5,1.5);
+}
+
+@media (max-width: 800px) {
+	.container {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.navbar h1{
+		padding-left: 0.5em;
+
+	}
+}
+@media (max-width:400px) {
+	.navbar .display-flex {
+		display: block;
+	}
+	.navbar .nav li {
+		line-height: 2em;
+	}
+}
+
+
+
+.figure.product {
+    background-color: white;
+    border-radius: 0.5em;
+    padding: 0.2em;
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Allow images to wrap to the next line */
+    justify-content: center;
+}
+
+.figure.product img {
+    width: 200px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0px; /* Add margin to create space around the images */
+   
+}
+
+
+.caption-body {
+	background-color: white;
+    text-align: left; /* Align text to the left */
+}
+
+.caption-body div {
+    margin-bottom: 5px; /* Add margin for spacing between text elements */
+}
+	
+.product-overlay {
+	border-radius: 0.5em;
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Evenly distribute items along the main axis */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px; /* Add margin between rows */
+}
+
+
+
+.product-overlay figcaption {
+	position: absolute;
+	border-radius: 0.5em;
+	top: 0;
+	left: 0;
+	width: 100;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity: 0;
+	transition: all 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.product-overlay:hover figcaption {
+	opacity: 1s;
+}
+
+.product-overlay caption-body {
+	background-color: white;
+	border-radius: 0.5em;
+	padding: 1em;
+	transform: translateY(2em);
+	transition: all 0.3s;
+}
+
+.product-overlay:hover caption-body {
+	transform: translateY(0);
+}
+
+.product-overlay img {
+	background-color: white;
+	border-radius: 0.5em;
+	padding: 1em;
+	transform: translateY(2em);
+	transition: all 0.3s;
+
+}
+
+.product-overlay:hover img {
+	transform: translateY(0);
+	border-radius: 0.5em;
 }
