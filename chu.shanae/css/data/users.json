@@ -1,0 +1,55 @@
+[
+    {
+        "name": "Shanae Chu",
+        "type": "Student",
+        "email": "schu8@art.edu",
+        "classes": [608, 601, 313]
+    },
+
+     {
+        "name": "Denise Villareal",
+        "type": "Advisor",
+        "email": "dvillareal@academyart.edu",
+        "classes": [608, 321, 420]
+    },
+
+     {
+        "name": "Joshua Escoto",
+        "type": "Student",
+        "email": "jescoto@art.edu",
+        "classes": [608, 420, 826]
+    },
+
+
+     {
+        "name": "Sofia Lee",
+        "type": "Student",
+        "email": "slee999@gmail.com",
+        "classes": [211, 601, 378]
+    },
+
+
+     {
+        "name": "Nicole Wong",
+        "type": "Student",
+        "email": "nicolewlt@gmail.com",
+        "classes": [313, 608, 601]
+    },
+
+
+     {
+        "name": "Sean Kwan",
+        "type": "Student",
+        "email": "seankwan@gmail.com",
+        "classes": [245, 608, 601]
+    },
+
+     {
+        "name": "Frank Pietronigro",
+        "type": "Teacher",
+        "email": "email@academyartu.brightspace.com",
+        "classes": [905, 219, 676]
+    }
+
+ 
+]
