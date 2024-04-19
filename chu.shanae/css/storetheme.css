@@ -23,6 +23,59 @@ body {
 
 }
 
+.default-button {
+	display: inline-block;
+	background-color: var(--color-blue-dark);
+	border-width: 0;
+	padding: 0.8em 1em;
+	font-family: "Stevie san", sans-serif;
+	font-size: 18px;
+	-webkit-appearance: none;
+	color: white;
+	width: 50%;
+	height: 50px;
+	outline: 0;
+	border-radius: 0.5em;
+	cursor: pointer;
+	text-align: center;
+}
+
+.disabled-button {
+	display: inline-block;
+	margin-left: 10px;
+	background-color: var(--color-blue-light);
+	border-width: 0;
+	padding: 0.5em 1em;
+	font-family: "Stevie san", sans-serif;
+	font-size: 18px;
+	-webkit-appearance: none;
+	color: white;
+	width: 20%;
+	height: 50px;
+	outline: 0;
+	border-radius: 0.5em;
+	cursor: pointer;
+}
+.add-button {
+    background-color: var(--color-blue-dark); 
+    border: none;
+    padding: 20px 50px;
+    border-radius: 0.5em; 
+    color: white;
+    cursor: pointer;
+    font-family: "Stevie sans", sans-serif;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.add-button:hover {
+    background-color: var(--color-green-light);
+    color: var(--color-black);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, outline-color 0.3s;
+    font-size: 18px;
+}
+
 .favorite label {
 	transition: all 0.3s;
 	display: inline-block;
@@ -41,7 +94,7 @@ body {
 		padding-right: 1em;
 	}
 	.navbar h1{
-		padding-left: 0.5em;
+		padding-left: 0em;
 
 	}
 }
@@ -50,10 +103,17 @@ body {
 		display: block;
 	}
 	.navbar .nav li {
-		line-height: 2em;
+		line-height: 3em;
 	}
 }
 
+.card-section~.card-section{
+	border-top:  2px  solid var(--color-neutral-light);
+}
+
+.card-section {
+	padding: 1em;
+}
 
 
 .figure.product {
@@ -65,6 +125,8 @@ body {
     display: flex; /* Use flexbox */
     flex-wrap: wrap; /* Allow images to wrap to the next line */
     justify-content: center;
+    height: 100%;
+    transition: all 0.3s;
 }
 
 .figure.product img {
@@ -92,7 +154,20 @@ body {
     margin-bottom: 20px; /* Add margin between rows */
 }
 
+.product.figure img{
+	height: 100%;
+	object-fit: contain;
+	
+}
 
+.productlist a {
+	text-decoration: none;
+	font-weight: initial;
+}
+
+.product.figure:hover {
+  box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+}
 
 .product-overlay figcaption {
 	position: absolute;
@@ -137,4 +212,16 @@ body {
 .product-overlay:hover img {
 	transform: translateY(0);
 	border-radius: 0.5em;
+}
+
+.images-main {
+	width: 100%;
+	height: 40vh;
+	object-fit: contain;
+}
+
+.images-thumbs{
+	width: 8em;
+	height: 6em;
+	object-fit: contain;
 }
