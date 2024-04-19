@@ -18,8 +18,6 @@
                     `);
             }
         </script>
-
-        <script>makeNav('nav nav-pills')</script>
     </div>
 
 		<div class="container display-flex">
@@ -27,11 +25,11 @@
 			<div class="styletitle">Sonder</div>
 			</div>
 			<div class="flex-stretch"></div>
-			<nav class="nav nav-flex flex-none">
+			<nav class="nav nav-pills ">
 				<ul>
 					<li><a href="index.php">Home</a></li>
 					<li><a href="product_list.php">Store</a></li>
-					<li><a href="cart.php">Cart</a></li>
+					<li><a href="product_cart.php">Cart</a></li>
 				</ul>
 			</nav>
 			</div>
