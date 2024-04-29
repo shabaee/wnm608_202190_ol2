@@ -1,23 +1,9 @@
+<?php 
 
+include_once "lib/php/functions.php";
+
+?>
 <header class="navbar">
- <script>
-            const makeNav = (classes='') => {
-                const links = ['Home','Store','About'];
-                let ran = Math.floor(Math.random()*links.length);
-                document.write(`
-                    <div>
-                    <nav class="${classes}">
-                    <ul>
-                    ${links.reduce((r,o,i)=>{
-                        return r+`<li class="${ran==i? 'active':''}"><a href="#">${o}</a></li>`;
-                    },'')}
-                    </ul>
-                    </nav>
-
-                    </div>
-                    `);
-            }
-        </script>
     </div>
 
 		<div class="container display-flex">
@@ -29,8 +15,10 @@
 				<ul>
 					<li><a href="index.php">Home</a></li>
 					<li><a href="product_list.php">Store</a></li>
-					<li><a href="product_cart.php">Cart</a></li>
-				</ul>
+					<li><a href="product_cart.php">
+						<span>Cart</span>
+						<span class="badge"><?= makeCartBadge(); ?></span>
+				</a></ul>
 			</nav>
 			</div>
 		</div>
