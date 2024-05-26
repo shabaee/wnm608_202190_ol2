@@ -1,81 +1,93 @@
 <?php
-include_once "lib/php/functions.php";
+include_once"lib/php/functions.php";
+include_once"parts/templates.php";
 
-// Sanitize $_GET['id'] input
-$id = $_GET['id'] ?? null;
-if (!is_numeric($id)) {
-    header("location: error.php");
-    exit;
-}
 
-// Fetch product from the database
-$product = makeQuery(makeConn(), "SELECT * FROM `products` WHERE `id`='$id'");
-if (empty($product)) {
-    header("location: error.php");
-    exit;
-}
+$product = makeQuery(makeConn(), "SELECT * FROM `products` WHERE `id` = ".$_GET['id'])[0];
 
-// Extract images and generate image elements
-$images = explode(",", $product[0]->images);
-$image_elements = array_reduce($images, function ($r, $o) {
-    return $r . "<img src='/css/img/$o'>";
-});
+$images = explode(",", $product->images);
 
-?><!DOCTYPE html>
+$image_elements = array_reduce($images, function($r,$o){
+	return $r."<img src='img/$o'>";
+})
+
+
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Product Item</title>
-    <?php include "parts/meta.php"; ?>
+	<title>Product Item Page - Item <?= $_GET['id']?></title>
+	<?php include"parts/meta.php";?>
+	<script src="js/product_thumbs.js"></script>
 
-    <script src="js/product_thumbs.js"></script>
 </head>
 <body>
+	<?php include"parts/navbar.php";?>
+	<div class="container">
+		<div class="grid gap">
 
-<?php include "parts/navbar.php"; ?>
+			<div class="col-xs-12 col-md-7">
+				<div class="card soft">
+					<div class="images-main">
+						<img src="img/<?= $product->thumbnail ?>" alt="<?= $product->name ?>">
+					</div>
+					<div class="images-thumbs">
+						<?= $image_elements ?>
+					</div>
+				</div>
+			</div>
 
-<div class="container">
-    <div class="card flat">
-        <div class="grid gap">
-            <div class="col-xs-12 col-md-7">
-                <div class="card soft">
-                    <div class="images-main">
-                        <img src="/css/img/<?= $product[0]->thumbnail ?>">
-                    </div>
-                    <div class="images-thumbs">
-                        <?= $image_elements ?>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-5">
-                <form class="card soft flat" method="post" action="cart_actions.php?action=add-to-cart">
-                    <!-- Hidden input field for product ID -->
-                    <input type="hidden" name="product-id" value="<?= $product->id ?>">
-                    <div class="card-section">
-                        <h1 class="product-name"><?= $product[0]->name ?></h1>
-                        <div class="product-price">&dollar;<?= $product[0]->price ?></div>
-                    </div>
-                    <div class="card-section">
-                        <label for="product-amount" class="form-label">Amount</label>
-                        <div class="form-select" id="product-amount">
-                            <select id="product-amount" name="product-amount">
-                                <?php for ($i = 1; $i <= 10; $i++) : ?>
-                                    <option><?= $i ?></option>
-                                <?php endfor; ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <input type="submit" class="default-button" value="Add To Cart" method="post" action="cart_actions.php?action=add-to-cart">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="card soft">
-        <p><?= $product[0]->description ?></p>
-    </div>
-</div>
+			<div class="col-xs-12 col-md-5">
+				<form action="cart_actions.php?action=add-to-cart" class="card soft" method="post">
+					<input type="hidden" name="product-id" value="<?= $product->id ?>">
+					<div class="card-section">
+						<h2 class="product-name"><?= $product->name ?></h2>
+						<div class="product-price">
+							&dollar;<?= $product->price ?>
+						</div>
+					</div>
+					<div class="card-section">
+						<div class="form-control">
+							<label for="product-amount" class="form-label">Amount</label>
+							<div class="form-select">
+								<select id="product-amount" name="product-amount">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+									<option>7</option>
+									<option>8</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-control">
+							<label for="product-color" class="form-label">Color</label>
+							<div class="form-select">
+								<select name="product-color" id="product-color">
+									<option>Blue</option>
+									<option>Red</option>
+									<option>Green</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="card-section">
+						<input type="submit" value="Add To Cart" class="form-button">
+					</div>
+				</form>
+			</div>
 
+		</div>
+
+		<div class="card soft dark">
+			<p><?= $product->description ?></p>
+		</div>
+		<h2>Recommended Products</h2>
+		<?php recommendedSimilar($product->category,$product->id);?>
+	</div>
+	
 </body>
 </html>

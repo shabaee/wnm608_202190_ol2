@@ -1,28 +1,38 @@
+<?php 
+include_once "lib/php/functions.php";
+include_once"parts/templates.php";
+
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Home</title>
-		<?php include "parts/meta.php"; ?>
+	<title>Sonder</title>
+	<?php
+		include "parts/meta.php";
+	?>
 </head>
 <body>
+	<?php
+		include "parts/navbar.php";
+	?>
 
-
-<?php include "parts/navbar.php"; ?>
-
-
-<div class="container">
-	<div class="card soft">
-		
-
-		<ul>
-			<li><a href="product_item.php?id=1" class="">Product 1</a></li>
-			<li><a href="product_item.php?id=2" class="">Product 2</a></li>
-			<li><a href="product_item.php?id=3" class="">Product 3</a></li>
-			<li><a href="product_item.php?id=4" class="">Product 4</a></li>
-		</ul>
+	<div class="view-window" style="background-image: url(img/about.jpg);background-position: 0 100%;">
+		<h2>Shop New Collection</h2>
 	</div>
-</div>
+	<div class="container">
+		<article class="article card soft">
+			<img src="https://fashionista.com/.image/t_share/MjAwNjc5MzU1MTkyNDUyNDgy/marc-jacobs-heaven-bella-hadid-fall-2023.jpg" alt="" class="media-image">
+		</article>
+	</div>
+
+	<div class="container">
+		<h1>New In</h1>
+		<?php recommendedCategory("accessories");?>
+		<h1>Just Restocked</h1>
+		<?php recommendedAnything(6);?>
+	</div>
+
 	
 </body>
 </html>
+

@@ -1,49 +1,30 @@
-<?php
+<?php 
 
 include_once "lib/php/functions.php";
 
-// Check if action is set
-$action = $_GET['action'] ?? '';
 
-switch ($action) {
-    case "add-to-cart":
-        // Sanitize input
-        $product_id = $_POST['product-id'] ?? '';
-        $product_amount = $_POST['product-amount'] ?? '';
-
-        if ($product_id && $product_amount) {
-            // Fetch product
-            $product = makeQuery(makeConn(), "SELECT * FROM `products` WHERE `id`='$product_id'");
-            if ($product) {
-                // Add to cart
-                addToCart($product_id, $product_amount);
-                // Redirect
-                header("location: addedtocart.php?id={$product_id}");
-                exit; // Always exit after header redirect
-            } else {
-                die("Product not found");
-            }
-        } else {
-            die("Product ID or amount is missing");
-        }
-        break;
-
-    case "update-cart-item":
-        // Your update logic here
-        break;
-
-    case "delete-cart-item":
-        // Your delete logic here
-        break;
-
-    case "reset-cart":
-        resetCart();
-        break;
-
-    default:
-        die("Incorrect Action");
-        break;
+switch($_GET['action']){
+	case "add-to-cart":
+		$product = makeQuery(makeConn(),"SELECT * FROM `products` WHERE `id` = ".$_POST['product-id'])[0];
+		addToCart($_POST['product-id'],$_POST['product-amount'],$_POST['product-color']);
+		header("location:product_added_to_cart.php?id={$_POST['product-id']}");
+		break;
+	case "update-cart-item":
+		$p = cartItemById($_POST['id']);
+		$p->amount = $_POST['amount'];
+		header("location:product_cart.php");
+		break;
+	case "delete-cart-item":
+		$_SESSION['cart'] = array_filter($_SESSION['cart'],function($o){return $o->id!=$_POST['id'];});
+		header("location:product_cart.php");
+		break;
+	case "reset-cart":
+		resetCart();
+		break;
+	default:
+		die("Incorrect Action");
 }
 
-// Debugging
-print_p([$_GET, $_POST, $_SESSION]);
+
+
+ ?>
