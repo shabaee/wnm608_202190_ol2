@@ -1,366 +1,520 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>CSS Styleguide</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../lib/css/styleguide.css">
+	<link rel="stylesheet" href="../lib/css/gridsystem.css">
+	<link rel="stylesheet" href="../css/storetheme.css">
 
-	<meta name="viewport" content="width=device-width">
-
-   <link rel="stylesheet" href="https://use.typekit.net/bnh7meq.css">
-
-   <link rel="stylesheet" href="../lib/css/styleguide.css">
-   <link rel="stylesheet" href="../lib/css/gridsystem.css">
-   <link rel="stylesheet" href="../css/storetheme.css">
-
-   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+	<!----- fonts ----->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<title>Style Guide</title>
 </head>
+
 <body>
 
-	   <header class="navbar">
-      <div class="container display-flex">
-         <div class="flex-none">
-   	  <div class="styletitle">Style Guide</div>
-      </div>
-
-   
-<div class="container" id="#typography">
-   <div class="type">Typography</div>
-
-
-
-   <div class="card soft" id="headings">
-      <h1 class="font">Typeface: Stevie Sans</h1>
-
-         <h2 class="headingbig">Heading</h2>
-         <p class="caption">Stevie Sans Black, 48pt</p>
-
-         <h3 class="subheading">Sub Heading</h3>
-         <p class="caption">Stevie Sans Medium, 32pt</p>
-
-         <h4 class="bodyheading">Body</h4>
-         <p class="bodytext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a consequat ante. Mauris pellentesque vestibulum fermentum. Donec eu vehicula ex, non convallis nisl. Fusce auctor erat nec diam interdum, a auctor sem pulvinar. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean id viverra diam, quis posuere dolor. Sed feugiat nisi eget lorem scelerisque sodales. Pellentesque pellentesque nunc nibh, id dictum felis gravida eget. Aenean pretium venenatis blandit. Curabitur tellus ipsum, venenatis a efficitur ut, iaculis vel odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-
-         <br>
-
-         <p class="caption">Stevie Sans Light, 24pt</p>
-      </div>
-   </div>
-
-
-
-<div class="container" id="#typography">
- <div class="type">Colors </div>
-   <div class="card soft" id="swatchcard">
-     
-
-      <div class="grid gap">
-         <div class="col-xs-12 col-md-4">
-            <div class="swatchcard swatch1">#FFFFFF</div>
-         </div>
-         <div class="col-xs-12 col-md-4">
-            <div class="swatchcard swatch2">#999999</div>
-         </div>
-         <div class="col-xs-12 col-md-4">
-            <div class="swatchcard swatch3">#000000</div>
-         </div>
-         <div class="col-xs-12 col-md-4">
-            <div class="swatchcard swatch4">#A6CAFF</div>
-         </div>
-         <div class="col-xs-12 col-md-4">
-            <div class="swatchcard swatch5">#4E5FF1</div>
-         </div>
-         <div class="col-xs-12 col-md-4">
-            <div class="swatchcard swatch6">#4E00FC</div>
-         </div>
-         <div class="col-xs-12 col-md-4">
-            <div class="swatchcard swatch7">#78E600</div>
-         </div>
-         <div class="col-xs-12 col-md-4">
-            <div class="swatchcard swatch8">#009100</div>
-         </div>
-         <div class="col-xs-12 col-md-4">
-            <div class="swatchcard swatch9">#336600</div>
-         </div>
-   </div>
-</div>
-</div>
-
-<div class="container" id="viewwindow">
-<div class="type">View Window</div>
-   
-     <div class="view-window" style="background-image: url('../css/img/window.jpg');">
-</div>
-</div>
-
-
-
-<div class="container" id="Navigations">
-<div class="type">Navigations</div>
-
- <script>
-            const makeNav = (classes='') => {
-                const links = ['Home','Store','About'];
-                let ran = Math.floor(Math.random()*links.length);
-                document.write(`
-                    <div>
-                    <nav class="${classes}">
-                    <ul>
-                    ${links.reduce((r,o,i)=>{
-                        return r+`<li class="${ran==i? 'active':''}"><a href="#">${o}</a></li>`;
-                    },'')}
-                    </ul>
-                    </nav>
-
-                    </div>
-                    `);
-            }
-        </script>
-
-
-    <div class="card soft">
-        <h1 class="font">Pills Navigation</h1>
-        <script>makeNav('nav nav-pills')</script>
-    </div>
-
-    <div class="card soft">
-        <h1 class="font">Crumbs Navigation</h1>
-        <script>makeNav('nav nav-crumbs')</script>
-    </div>
-
-    <div class="card soft">
-        <h1 class="font">Material Navigation</h1>
-        <script>makeNav('nav nav-material')</script>
-    </div>
-
-    <script>
-        $("#navigations a").on("click", function(e){
-            e.preventDefault();
-            $(this).closest("li").addClass("active")
-            .siblings().removeClass("active")
-        })
-    </script>
-
-    </div>
-
-
-    <!-- FIGURE -->
-
-   <div class="container">
-
-    <div class="type">Product View</div>
-    <div class="product-view">
-        <div class="main-image-container">
-            <img src="https://www.marcjacobs.com/edgio-cdn-amplience/i/Marc_Jacobs/MJI_3S4RTP005C05_100_F8F8F8_1-1_MAIN?fmt=auto&sm=aspect&aspect=2:3&w=1200&qlt=68&img404=NOIMAGEMEDIUM_1-1&unsharp=0%2C1%2C1%2C20" alt="Product View" class="main-image"/>
-        </div>
-
-        <!-- Thumbnails -->
-        <div class="previews">
-            <img src="https://www.marcjacobs.com/edgio-cdn-amplience/i/Marc_Jacobs/MJI_3S4RTP005C05_100_F8F8F8_1-1_ALT1?fmt=auto&sm=aspect&aspect=2:3&w=1200&qlt=68&img404=NOIMAGEMEDIUM_1-1&unsharp=0%2C1%2C1%2C20" alt="Preview 1" class="thumbnail"/>
-            <img src="https://www.marcjacobs.com/edgio-cdn-amplience/i/Marc_Jacobs/MJI_3S4RTP005C05_100_F8F8F8_1-1_ALT2?fmt=auto&sm=aspect&aspect=2:3&w=1200&qlt=68&img404=NOIMAGEMEDIUM_1-1&unsharp=0%2C1%2C1%2C20" alt="Preview 2" class="thumbnail"/>
-            <img src="https://www.marcjacobs.com/edgio-cdn-amplience/i/Marc_Jacobs/MJI_3S4RTP005C05_100_F8F8F8_1-1_ALT3?fmt=auto&sm=aspect&aspect=2:3&w=1200&qlt=68&img404=NOIMAGEMEDIUM_1-1&unsharp=0%2C1%2C1%2C20" alt="Preview 3" class="thumbnail"/>
-            <img src="https://www.marcjacobs.com/edgio-cdn-amplience/i/Marc_Jacobs/MJI_3S4RTP005C05_100_F8F8F8_1-1_ALT4?fmt=auto&sm=aspect&aspect=2:3&w=1200&qlt=68&img404=NOIMAGEMEDIUM_1-1&unsharp=0%2C1%2C1%2C20" alt="Preview 4" class="thumbnail"/>
-      
-        </div>
-    </div>
-
-
-<script>
-    $(document).ready(function() {
-    $('.thumbnail').on('click', function() {
-        var src = $(this).attr('src');
-        $('.main-image').attr('src', src);
-
-        // Highlight the active thumbnail
-        $('.thumbnail').removeClass('active');
-        $(this).addClass('active');
-    });
-
-    
-    $('.prev').on('click', function() {
-      
-    });
-
-    $('.next').on('click', function() {
-      
-    });
-});
-</script>
-
-
-        <!-- FIGURE GRID -->
-
-        <div class="container">
-            <div class="type">Product Grid</div>
-            <div class="grid gap">
-                <div class="col-xs-12 col-md-4">
-                    <figure class="figure product">
-                        <img src="https://www.marcjacobs.com/edgio-cdn-amplience/i/Marc_Jacobs/MJI_3S4RTP099W04_002_F8F8F8_1-1_ALT2?fmt=auto&sm=aspect&aspect=2:3&w=2500&qlt=68&img404=NOIMAGEMEDIUM_1-1&unsharp=0%2C1%2C1%2C20"  alt=""/>
-                        <figcaption>
-                            <div class ="caption-body">POLKA DOT SATIN TANK</div>
-                            <div>$200</div>
-                            
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <figure class="figure product">
-                        <img src="https://www.marcjacobs.com/edgio-cdn-amplience/i/Marc_Jacobs/MJI_3S4JER001J32_045_F8F8F8_1-1_MAIN?fmt=auto&sm=aspect&aspect=2:3&w=2500&qlt=68&img404=NOIMAGEMEDIUM_1-1&unsharp=0%2C1%2C1%2C20"  alt=""/>
-                        <figcaption>
-                            <div class ="caption-body">ROBOT EARRINGS</div>
-                            <div>$100</div>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <figure class="figure product">
-                        <img src="https://www.marcjacobs.com/edgio-cdn-amplience/i/Marc_Jacobs/MJI_3S4RTP036D01_200_F8F8F8_1-1_MAIN?fmt=auto&sm=aspect&aspect=2:3&w=1200&qlt=68&img404=NOIMAGEMEDIUM_1-1&unsharp=0%2C1%2C1%2C20"  alt=""/>
-                        <figcaption>
-                            <div class ="caption-body">STRAPLESS BUSTIER</div>
-                            <div>$150</div>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-         </div>
-
-
-
-
-
-    
-<div class="container" id="forms">
-   <div class="type">Forms </div>
-      <div class="card soft">
-
-                <div class="container">
-                   <h1 class="font">Delivery Information</h1>
-                        
-        
-    </label>
-  
-    <div class="form-fill">
-        <input type="text" placeholder="First name" />
-        <input type="text" placeholder="Last name" />
-  
-    <input type="text" placeholder="Address Line 1" />
-    <input type="text" placeholder="Address Line 2 (Optional)" />
-    
-        <input type="text" placeholder="City" />
-        <select>
-            <option>State</option>
-            <option>Alamaba</option>
-            <option>Alaska</option>
-            <option>Arizona</option>
-            <option>Arkansas</option>
-            <option>California</option>
-            <option>Colorado</option>
-            <option>Connecticut</option>
-            <option>Delware</option>
-            <option>Florida</option>
-            <option>Georgia</option>
-            <option>Hawaii</option>
-            <option>Idaho</option>
-            <option>Illinois</option>
-            <option>Indiana</option>
-            <option>Iowa</option>
-            <option>Kansas</option>
-            <option>Kentucky</option>
-        </select>
-        <input type="text" placeholder="ZIP code" /><br />
-        <input type="email" placeholder="Email" /><br />
-         
-
-         <label class="checkbox"><input type="checkbox" checked="checked">I want to receive news and updates
- 
- </label>
-
-    <button type="button" class="save-btn">Save and continue</button>
-    </div>
-    </div>
- </div>
-
-    </form>
-               
-  <div class="container" id="search">
-   <div class="type">Search Bars</div>
-      <div class="card soft">
-         <form>
-            <input type="search" class="hotdog" placeholder="Search">
-         </form>
-         <form>
-            <input type="search" class="hotdog dark" placeholder="Search">
-         </form>
-
-            </div>
-      </div>
-   </div>
-   </div>
-
-
-   <div class="container" id="buttons">
-   <div class="type">Buttons</div>
-      <div class="card soft">
-        <h1 class="font">Default Buttons</h1>
-    <button class="default-button">Default Button</button>
-    <button class="disabled-button">Disabled Button</button>
-                <h1 class="font">Cart Buttons</h1>
-                <div class="quantity-selector">
-                <button class="minus">-</button>
-                <input type="number" id="quantity" value="1" min="1">
-                <button class="plus">+</button>
-            </div>
-
-            <button class="add-button">Add to bag</button>
-
-            
-            </div>
-
-    
-       
-   
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var quantityInput = document.getElementById('quantity');
-
-    // Quantity decrement
-    document.querySelector('.minus').addEventListener('click', function() {
-        quantityInput.value = Math.max(parseInt(quantityInput.value, 10) - 1, 1);
-    });
-
-    // Quantity increment
-    document.querySelector('.plus').addEventListener('click', function() {
-        quantityInput.value = parseInt(quantityInput.value, 10) + 1;
-    });
-
-  
-    });
-
-
-
-</script>
-
-<div class="container" id="checkbox">
-   <div class="type">Checkboxes</div>
-      <div class="card soft">
-        
-         <label class="checkbox-container">
-            <input type="checkbox" checked="checked">
-        </label>    
-<br />
-         <label class="toggle-switch">
-            <input type="checkbox" id="toggle">
-            <span class="slider round"></span>
-        </label>
-        <div class="product-options">
-   
-        </div>
-    </div>
-
-<br>
-<br>
-
-
-
+	<header class="navbar">
+		<div class="container display-flex">
+			<div class="flex-none">
+				<div class="headings">Style Guide</div>
+			</div>
+			<div class="flex-stretch"></div>
+			<nav class="flex-none nav">
+				<ul>
+					<li><a href="#tableofcontents">Table of Contents</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+
+	<div class="container" id="tableofcontents">
+		<div class="sub-headings">Table of Contents</div>
+		<div class="card soft">
+			<nav class="nav">
+				<ul>
+				<li class="type"><a href="#typography">Typography</a>
+					<ul>
+						<li ><a href="#headings">Headings</a></li>
+						<li ><a href="#paragraphs">Paragraphs</a></li>
+					</ul>
+				</li>
+				<li><a href="#cards">Cards</a></li>
+				<li><a href="#viewwindow">View Window</a></li>
+				<li><a href="#navigations">Navigations</a></li>
+				<li><a href="#gridsystem">Grid System</a></li>
+				<li><a href="#flexsystem">Flex System</a></li>
+				<li><a href="#tables">Tables</a></li>
+				<li><a href="#figures">Figures</a></li>
+				<li class="form"><a href="#forms">Forms</a>
+					<ul>
+						<li><a href="#inputs">Inputs</a></li>
+						<li><a href="#labels">Labels</a></li>
+						<li><a href="#controls">Controls</a></li>
+						<li><a href="#buttons">Buttons</a></li>
+						<li><a href="#hotdogs">Hot Dogs</a></li>
+						<li><a href="#select">Select</a></li>
+						<li><a href="#checkbox">Check Boxes</a></li>
+					</ul>
+				</li>
+			</ul>
+			</nav>
+			
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="sub-headings">Typography</div>
+		<div class="card soft" id="headings">
+			<div class="sub-headings-color">Headings</div>
+			<div class="headings-color">Heading 1</div>
+			<h2>Heading 2</h2>
+			<h3>Heading 3</h3>
+			<h4>Heading 4</h4>
+			<h5>Heading 5</h5>
+			<h6>Heading 6</h6>
+		</div>
+		<div class="card soft" id="paragraphs">
+			<div class="sub-headings-color">Paragraphs</div>
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos iste hic corporis voluptatem iure, assumenda esse, quas sit? Itaque illum est dolor laborum nobis sunt quo? Beatae expedita vel perspiciatis, architecto est assumenda optio fugit fuga, mollitia recusandae cupiditate esse.</p>
+			<p>Consequuntur rerum libero adipisci sequi inventore, quibusdam cumque ducimus et, ipsum, provident impedit quos eius praesentium eos ullam quidem culpa nam temporibus fuga beatae, facere. Inventore hic molestiae voluptatibus at nulla ex eum ea, aspernatur perspiciatis expedita et est alias.</p>
+			<p>Beatae placeat nulla, cumque impedit obcaecati eos assumenda, quidem iste non doloremque dolore sit, iure ab eum rem, enim illo exercitationem atque ipsum. Illum, nobis vel fugiat dolor rerum accusamus, nemo. Pariatur voluptatum iure repellat vero et esse in harum?</p>
+		</div>
+	</div>
+
+	<div class="container" id="cards">
+		<div class="sub-headings">Cards</div>
+		<div class="grid gap">
+			<div class="col-xs-12 col-md-4">
+				<div class="card">Card</div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<div class="card soft">Card Soft</div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<div class="card hard">Card Hard</div>
+			</div>
+			
+			<div class="col-xs-12 col-md-4">
+				<div class="card dark">Card Dark</div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<div class="card medium">Card Medium</div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<div class="card flat">Card Flat</div>
+			</div>
+		</div>
+	</div>
+
+
+			<div class="sub-headings">View Window</div>
+		<div class="view-window" style="background-image: url(../img/back.jpg);"></div>
+	<div class="container" id="navigations">
+		<div class="sub-headings">Navigations</div>
+		<script>
+			const makeNav=(classes="")=>{
+				const links =['home','about','store','cart'];
+				let ran=Math.floor(Math.random()*links.length);
+				document.write(`
+					<div>
+						<nav class="${classes}">
+							<ul>
+								${links.reduce((r,o,i)=>{
+									return r+`<li class="${ran==i?'active':''}"><a href="#">${o}
+									</a></li>`;
+								},'')}
+							</ul>
+						</nav>
+					</div>
+			`)};
+		</script>
+		<div class="card soft">
+			<h3>Basic Nav</h3>
+			<script>makeNav('nav')</script>
+		</div>
+		<div class="card soft">
+			<h3>Flex Nav</h3>
+			<script>makeNav('nav nav-flex')</script>
+		</div>
+		<div class="card soft">
+			<h3>Stretch Nav</h3>
+			<script>makeNav('nav nav-stretch')</script>
+		</div>
+		<div class="card soft">
+			<h3>Pills Nav</h3>
+			<script>makeNav('nav nav-pills')</script>
+		</div>
+		<div class="card soft">
+			<h3>Crumbs Nav</h3>
+			<script>makeNav('nav nav-crumbs')</script>
+		</div>
+		<div class="card soft">
+			<h3>Material Nav</h3>
+			<script>makeNav('nav nav-material')</script>
+		</div>
+	</div>
+
+
+	<div class="container" id="gridsystem">
+		<div class="sub-headings"> Grid System</div>
+		<div class="card soft">
+			<h3>Basic Grid Structure</h3>
+			<h4>Single Column Non-Responsive</h4>
+			<div class="grid">
+				<div class="col-xs-12">
+					<div class="well">Column 12</div>
+				</div>
+			</div>
+
+			<h4>3 Column Responsive</h4>
+			<div class="grid">
+				<div class="col-xs-12 col-md-4">
+					<div class="well">col-xs-12 col-md-4</div>
+				</div>
+				<div class="col-xs-12 col-md-4">
+					<div class="well">col-xs-12 col-md-4</div>
+				</div>
+				<div class="col-xs-12 col-md-4">
+					<div class="well">col-xs-12 col-md-4</div>
+				</div>			
+			</div>
+
+			<h4>4 Column Responsive</h4>
+			<div class="grid">
+				<div class="col-xs-12 col-md-3">
+					<div class="well">col-xs-12 col-md-3</div>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="well">col-xs-12 col-md-3</div>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="well">col-xs-12 col-md-3</div>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="well">col-xs-12 col-md-3</div>
+				</div>		
+			</div>
+
+			<h3>Gap</h3>
+			<h4>4 Column Responsive with gap</h4>
+			<div class="grid gap">
+				<div class="col-xs-12 col-md-3">
+					<div class="well">col-xs-12 col-md-3</div>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="well">col-xs-12 col-md-3</div>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="well">col-xs-12 col-md-3</div>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="well">col-xs-12 col-md-3</div>
+				</div>
+			</div>
+
+			<h4>Other Examples</h4>
+			<div class="grid gap" >
+				<div class="col-xs-12 col-md-6">
+					<img src="https://via.placeholder.com/600" class="media-image">
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<div class="grid gap">
+						<div class="col-xs-12 col-md-6">
+							<img src="https://via.placeholder.com/600" alt="" class="media-image">
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<img src="https://via.placeholder.com/600" alt="" class="media-image">
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<img src="https://via.placeholder.com/600" alt="" class="media-image">
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<img src="https://via.placeholder.com/600" alt="" class="media-image">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const makeTable= (classes='')=> {
+			const head =['ID','Office','Name','Email','Phone'];
+			const body =[
+					['522','First Name','email@email.com','415-555-2525'],
+					['522','First Name','email@email.com','415-555-2525'],
+					['522','First Name','email@email.com','415-555-2525'],
+					['522','First Name','email@email.com','415-555-2525'],
+					['522','First Name','email@email.com','415-555-2525']
+				];
+			document.write(`
+				<table class="${classes}">
+					<thead><tr>${head.reduce((r,o)=>r+`<th>${o}</th>`,'')}</tr></thead>
+					<tbody>
+						${body.reduce((r,o,i)=>r+
+							`<tr>${
+								[i+1,...o].reduce((r,o)=>r+`<td>${o}</td>`,'')
+							}</tr>`,'')}</tbody>
+				</table>`);
+
+		}
+	</script>
+
+	<div class="container" id="tables">
+		<div class="sub-headings">Tables</div>
+		<div class="card soft">
+			<h3>Basic</h3>
+			<script>makeTable('table')</script>
+		</div>
+		<div class="card soft">
+			<h3>Striped</h3>
+			<script>makeTable('table striped')</script>
+		</div>
+		<div class="card soft">
+			<h3>Lined Vertical</h3>
+			<script>makeTable('table lined vertical')</script>
+		</div>
+		<div class="card soft">
+			<h3>Lined Horizontal</h3>
+			<script>makeTable('table lined horizontal')</script>
+		</div>
+
+	<div class="container" id="figures">
+		<div class="sub-headings">Figures</div>
+		<div class="card soft">
+			<h2>Basic Product Display</h2>
+			<figure>
+				<img src="https://via.placeholder.com/400x400?text=product" alt="">
+				<figcaption>Product</figcaption>
+			</figure>
+		</div>
+		<h3>Figure Grid</h3>
+		<div class="grid gap">
+			<div class="col-xs-12 col-md-4">
+				<figure class="figure">
+					<img src="https://via.placeholder.com/400x400?text=product" alt="">
+					<figcaption>Product</figcaption>
+				</figure>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<figure class="figure">
+					<img src="https://via.placeholder.com/400x400?text=product" alt="">
+					<figcaption>Product</figcaption>
+				</figure>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<figure class="figure">
+					<img src="https://via.placeholder.com/400x400?text=product" alt="">
+					<figcaption>Product</figcaption>
+				</figure>
+			</div>
+		</div>
+		<h3>Product Grid</h3>
+		<div class="grid gap">
+				<div class="col-xs-12 col-md-4">
+					<figure class="figure product">
+						<img src="https://via.placeholder.com/400x400?text=product" alt="">
+						<figcaption>
+							<div>Product Name</div>
+							<div>$$$$</div>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-xs-12 col-md-4">
+					<figure class="figure product">
+						<img src="https://via.placeholder.com/400x400?text=product" alt="">
+						<figcaption>
+							<div>Product Name</div>
+							<div>$$$$</div>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-xs-12 col-md-4">
+					<figure class="figure product">
+						<img src="https://via.placeholder.com/400x400?text=product" alt="">
+						<figcaption>
+							<div>Product Name</div>
+							<div>$$$$</div>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			<h3>Product Overlay</h3>
+			<div class="grid gap">
+				<div class="col-xs-12 col-md-4">
+					<figure class="figure product-overlay">
+						<img src="https://via.placeholder.com/400x400?text=product" alt="">
+						<figcaption>
+							<div class="caption-body">
+								<div>Product Name</div>
+								<div>3.99</div>
+							</div>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-xs-12 col-md-4">
+					<figure class="figure product-overlay">
+						<img src="https://via.placeholder.com/400x400?text=product" alt="">
+						<figcaption>
+							<div class="caption-body">
+								<div>Product Name</div>
+								<div>3.99</div>
+							</div>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-xs-12 col-md-4">
+					<figure class="figure product-overlay">
+						<img src="https://via.placeholder.com/400x400?text=product" alt="">
+						<figcaption>
+							<div class="caption-body">
+							<div>Product Name</div>
+							<div>3.99</div>
+							</div>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+		</div>
+		<div class="container" id="forms">
+			<h2>Forms</h2>
+			<h3>Inputs</h3>
+			<div class="card soft">
+				<h3>Default Inputs</h3>
+				<form class="block">
+					<label>Text</label>
+					<input type="text"><br>
+					<label>Password</label><br>
+					<input type="password"><br>
+					<label>Number</label><br>
+					<input type="number"><br>
+					<label>URL</label><br>
+					<input type="url"><br>
+					<label>Email</label><br>
+					<input type="email"><br>
+					<label>Date Time</label><br>
+					<input type="datetime-local"><br>
+					<label>Date</label><br>
+					<input type="date"><br>
+					<label>Search</label><br>
+					<input type="search"><br>
+					<label>Submit</label><br>
+					<input type="submit" value="Submit">
+				</form>
+				<h3 id="inputs">Form Input</h3>
+				<form>
+					<input type="text" class="form-input" placeholder="Text">
+					<input type="password" class="form-input" placeholder="Password">
+					<input type="number" class="form-input" placeholder="Number">
+					<input type="search" class="form-input" placeholder="Search">
+				</form>
+				<h3 id="label">Form Label</h3>
+				<form >
+					<label class="form-label">Put Label Here</label>
+					<input type="text" class="form-input" placeholder="Text">
+					<label class="form-label">Put Label Here</label>
+					<input type="text" class="form-input" placeholder="Password">
+					<label class="form-label">Put Label Here</label>
+					<input type="text" class="form-input" placeholder="Number">
+					<label class="form-label">Put Label Here</label>
+					<input type="text" class="form-input" placeholder="Search">
+				</form>
+
+				<h3 id="form-control">Form Control</h3>
+				<form action="">
+					<div class="form-control">
+						<label class="form-label">Put Label Here</label>
+						<input type="text" class="form-input" placeholder="Text">
+					</div>
+					<div class="form-control">
+						<label class="form-label">Put Label Here</label>
+						<input type="password" class="form-input" placeholder="Password">
+					</div>
+					<div class="form-control">
+						<label class="form-label">Put Label Here</label>
+						<input type="number" class="form-input" placeholder="Number">
+					</div>
+					<div class="form-control display-flex flex-align-center">
+						<div class="flex-none">
+							<label  class="form-label">Form Label</label>
+						</div>
+						<div class="flex-stretch">
+							<input type="search" class="form-input" placeholder="Search">
+						</div>
+						<div class="flex-none">
+							<label  class="form-label">Form Label</label>
+						</div>
+						<div class="flex-stretch">
+							<input type="search" class="form-input" placeholder="Search">
+						</div>
+					</div>
+				</form>
+
+			</div>
+
+			<h3 id="buttons">Buttons</h3>
+			<div class="card soft">
+				<h3>Default Buttons</h3>
+				<button >Button</button>
+				<h3>Form Buttons</h3>
+				<div class="form-control">
+					<button type="button" class="form-button">Button</button>
+				</div>
+
+	    	<h2 id="hotdogs">Hot Dog Search Bars</h2>
+	    	<div class="card soft">
+	    		<div class="form-content">
+	    			<form>
+	    				<input type="text" class="hotdog" placeholder="Search">
+	    			</form>
+	    		</div>
+	    		<div class="form-control">
+	    			<form class="card dark1">
+	    				<input type="text" class="hotdog light" placeholder="Search">
+	    			</form>
+	    		</div>
+	    		<div class="form-control">
+	    			<form class="hotdog">
+	    				<input type="search" placeholder="Search">
+	    				<span>&equiv;</span>
+	    			</form>
+	    		</div>
+	    	</div>
+
+	    	<h3 id="select">Drop Down Select Form</h3>
+	    	<div class="card soft">
+	    		<div class="form-select">
+	    			<select>
+	    				<option value="">1</option>
+	    				<option value="">2</option>
+	    				<option value="">3</option>
+	    				<option value="">4</option>
+	    			</select>
+	    		</div>
+	    	</div>
+
+	    	<h3 id="checkbox">Check Boxes</h3>
+	    	<div class="card soft">
+	    		<h3>Basic Check Box</h3>
+	    		<label >Label<input type="checkbox" id="input-1"></label>
+	    		<h3>Heart Check Box</h3>
+	    		<div class="favorite">
+	    			<input type="checkbox" id="heart-example" class="hidden">
+	    			<label for="heart-example">&hearts;</label>
+	    		</div>
+	    		<h3>Toggle</h3>
+	    		<div class="toggle">
+	    			<input type="checkbox" id="toggle-1" class=hidden>
+	    			<label for="toggle-1"></label>
+	    		</div>
+	    		<div class="display-flex flex-align-center">
+	    			
+	    		</div>
+	    	</div>
+	    </div>
 </body>
 </html>
