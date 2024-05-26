@@ -1,0 +1,38 @@
+[
+	{
+		"name":"Phobe Buffay",
+		"type":"Singer",
+		"email":"2222222@gmail.com",
+		"classes":[601,608,618]
+	},
+	{
+		"name":"Joey",
+		"type":"Actor",
+		"email":"1111111@gmail.com",
+		"classes":[601,608,618]
+	},
+	{
+		"name":"Chandler",
+		"type":"Who knows",
+		"email":"3333333@gmail.com",
+		"classes":[601,608,618]
+	},
+	{
+		"name":"Monica",
+		"type":"Chef",
+		"email":"4444444@gmail.com",
+		"classes":[601,608,618]
+	},
+	{
+		"name":"Ross",
+		"type":"Teacher",
+		"email":"5555555@gmail.com",
+		"classes":[601,608,618]
+	},
+	{
+		"name":"Rachel",
+		"type":"Buyer",
+		"email":"66666666@gmail.com",
+		"classes":[601,608,618]
+	}
+]
