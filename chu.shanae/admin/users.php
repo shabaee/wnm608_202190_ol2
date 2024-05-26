@@ -1,159 +1,175 @@
 <?php
 include "../lib/php/functions.php";
 
+$filename = "../data/users.json";
+$users = file_get_json($filename);
 
-$users = file_get_json("../css/data/users.json");
+$empty_user = (object) [
+	"name"=>"",
+	"type"=>"",
+	"email"=>"",
+	"classes"=>[]
+];
 
+//*********CRUD***********//
 
+if(isset($_GET['action'])){
+	switch($_GET['action']){
+		case 'update':
+			$users[$_GET['id']]->name = $_POST['user-name'];
+			$users[$_GET['id']]->type = $_POST['user-type'];
+			$users[$_GET['id']]->email = $_POST['user-email'];
+			$users[$_GET['id']]->classes = explode(", ",$_POST['user-classes']);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'add') {
-    $newUser = new stdClass();
-    $newUser->name = $_POST['name'] ?? '';
-    $newUser->type = $_POST['type'] ?? '';
-    $newUser->email = $_POST['email'] ?? '';
-    $newUser->classes = array_filter(explode(',', $_POST['classes'] ?? ''));
-    $users[] = $newUser;
-    file_put_contents("../data/users.json", json_encode($users, JSON_PRETTY_PRINT));
-    header('Location: users.php');
-    exit;
+			file_put_contents($filename, json_encode($users));
+			header("location:{$_SERVER['PHP_SELF']}?id={$_GET['id']}");
+		break;
+
+		case 'create':
+			$empty_user->name = $_POST['user-name'];
+			$empty_user->type = $_POST['user-type'];
+			$empty_user->email = $_POST['user-email'];
+			$empty_user->classes = explode(", ",$_POST['user-classes']);
+
+			$id = count($users);
+			$users[] = $empty_user;
+
+			file_put_contents($filename,json_encode($users));
+			header("location:{$_SERVER['PHP_SELF']}?id=$id");
+		break;
+
+		case "delete":
+			array_splice($users, $_GET['id'],1);
+			file_put_contents($filename, json_encode($users));
+			header("location:{$_SERVER['PHP_SELF']}");
+		break;
+	}
 }
 
 
 
 function showUserPage($user) {
-    $selectedStudent = $user->type === 'Student' ? 'selected' : '';
-    $selectedTeacher = $user->type === 'Teacher' ? 'selected' : '';
-    $selectedAdvisor = $user->type === 'Advisor' ? 'selected' : '';
-    $selectedStaff = $user->type === 'Staff' ? 'selected' : '';
-    $classes = implode(", ", $user->classes);
 
-    echo <<<HTML
+	$id = $_GET['id'];
 
-<form action="admin/users.php" method="POST" class="form-card">
-    <div class="form-group">
-        <h3 class="title">Edit User: {$user->name}</h3>
-        <input type="hidden" name="name" value="{$user->name}">
-    </div>
-    <div class="form-group">
-    <div class="form-select-container">
-        <label for="type" class="bodytext"><strong>Type</strong></label>
-        <select name="type" id="type" class="form-select">
-            <option value="Student" $selectedStudent>Student</option>
-            <option value="Teacher" $selectedTeacher>Teacher</option>
-            <option value="Staff" $selectedStaff>Staff</option>
-            <option value="Advisor" $selectedAdvisor>Advisor</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="email" class="bodytextt"><strong>Email</strong></label>
-        <input type="email" name="email" id="email" value="$user->email" class="form-control stevie-medium">
-    </div>
-    <div class="form-group">
-        <label for="classes" class="bodytext"><strong>Classes</strong></label>
-        <input type="text" name="classes" id="classes" value="$classes" class="form-control stevie-medium">
-    </div>
-    <div>
-        <button type="submit" class="btn stevie-bold">Update</button>
-    </div>
-</form>
+	$addoredit = $id == "new" ? "Add" : "Edit";
+	$createorupdate = $id =="new" ? 'create' : 'update';
 
-<br>
-<br>
+	$classes = implode(",", $user->classes);
 
+//***heredoc******//
+	$display = <<<HTML
 
-HTML;
+	<div>
+		<h2>$user->name</h2>
+		<div>
+			<strong>Type</strong>
+			<span>$user->type</span>
+		</div>
+		<div>
+			<strong>Email</strong>
+			<span>$user->email</span>
+		</div>
+		<div>
+			<strong>Classes</strong>
+			<span>$classes</span>
+		</div>
+	</div>
+	HTML;
+
+	$form = <<<HTML
+	<form method="post" action="{$_SERVER['PHP_SELF']}?id=$id&action=$createorupdate">
+		<h2>$addoredit User</h2>
+		<div class="form-control">
+			<label class="form-label" for="user-name">Name</label>
+			<input class="form-input" name="user-name" id="user-name" type="text" placeholder="Enter user name" value="$user->name" >
+		</div>
+		<div class="form-control">
+			<label class="form-label" for="user-type">Type</label>
+			<input class="form-input" name="user-type" id="user-type" type="text" placeholder="Enter user type" value="$user->type" >
+		</div>
+		<div class="form-control">
+			<label class="form-label" for="user-email">Email</label>
+			<input class="form-input" name="user-email" id="user-email" type="text" placeholder="Enter user email" value="$user->email" >
+		</div>
+		<div class="form-control">
+			<label class="form-label" for="user-classes">Classes</label>
+			<input class="form-input" name="user-classes" id="user-classes" type="text" placeholder="Enter user classes comma separated" value="$classes" >
+		</div>
+		<div class="form-control" >
+		<input class="form-button" type="submit" value="Save Changes">
+		</div>
+	</form>
+	HTML;
+
+	$output = $id == "new" ? $form : 
+		"<div class='grid gap'>
+			<div class='col-xs-12 col-md-7'>$display</div>
+			<div class='col-xs-12 col-md-5'>$form</div>
+		</div>";
+
+	$delete = $id == "new" ? '' : "<a href='{$_SERVER['PHP_SELF']}?id=$id&action=delete'>Delete</a>";
+
+	echo <<<HTML
+	<nav class="display-flex">
+		<div class="flex-stretch"><a href="{$_SERVER['PHP_SELF']}">Back</a></div>
+		<div class="flex-none">$delete</div>
+	</nav>
+	$output
+	HTML;
 }
-
 ?>
-
 
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>User Admin</title>
-    <?php include "../parts/meta.php"; 
-
-
-    ?>
-
-
-
+	<title>Reading Data</title>
+	<?php include "../parts/meta.php";?>
 </head>
 <body>
+	<header class="navbar">
+		<div class="container display-flex">
+		    <div class="flex-none">
+			    <h1>User Admin</h1>
+		    </div>
+		    <div class="flex-stretch"></div>
+		    <div class="flex-none nav nav-flex">
+			    <ul>
+				    <li><a href="<?= $_SERVER['PHP_SELF'] ?>">User List</a></li>
+				    <li><a href="<?= $_SERVER['PHP_SELF'] ?>?id=new">Add New User</a></li>
+			    </ul>
+		    </div>
+		</div>
+	</header>
 
-    <header class="navbar">
-        <div class="container display-flex">
-            <div class="flex-none">
-                <div class="styletitle">User Admin</div>
-            </div>
-            <div class="flex-stretch"></div>
-            <nav class="nav nav-pills flex-stretch">
-                <ul>
-                    <li><a href="admin/users.php">User List</a></li>
-                    <li><a href="admin/new_user.php">Add New User</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+	<div class="container">
+		<div class="card soft">
+			<?php
+			if(isset($_GET['id'])){
+				showUserPage($_GET['id'] == "new" ? $empty_user : $users[$_GET['id']]);
+			} else {
 
+			?>
 
-
-           
-<div class="container">
-
-
-     
-            <?php
-
-
-
-            if (isset($_GET['id'])) {
-                showUserPage($users[$_GET['id']]);
-               
-            } else {
-
-            ?>
-
-        <div class="card soft">
-
-       <div class="subheading">User List</div>
-
-        <nav class="nav">
-
-            <ul>
-
-        <?php
+			<h2>User List</h2>
+			<nav class="nav">
+				<ul>
+					<?php
+					for($i=0; $i<count($users);$i++){
+						echo "<li>
+						<a href='{$_SERVER['PHP_SELF']}?id=$i'>{$users[$i]->name}</a>
+						</li>";
+					} ?>
+				</ul>
+			</nav>
 
 
-         for($i=0;$i<count($users);$i++) {
-             echo "<li>
-             <a href='admin/users.php?id=$i'>{$users[$i]->name}</a>
-       
-             </li>";
 
-    
+		<?php } ?>
 
-         }
-
-
-        ?>
-        </ul>
-    </nav>
-
-        <?php } ?>
-
-    </div>
-    </div> 
-
-    <div class="flex-none"></div>
-            <nav class="nav nav-pills flex-none">
-    <ul>
-    <li><a href="admin/users.php">Return</a></li>
-    </ul>
-</nav>                 
-
+		</div>
+	</div>
 </body>
 </html>
